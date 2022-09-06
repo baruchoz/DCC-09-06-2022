@@ -7,7 +7,8 @@
 // "identifier"   =>  "identifier"
 // ""             =>  ""
 
-function solution(string) {
+// Solution 1
+function solutionOne(string) {
   let arr = string.split("");
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === arr[i].toUpperCase()) {
@@ -17,4 +18,27 @@ function solution(string) {
   return arr.join("");
 }
 
-console.log(solution("camelCaseTest"));
+// Solution 2
+function solutionTwo(string) {
+  let arr = string.split("");
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === arr[i].toUpperCase()) {
+      arr.splice(i, 0, " ");
+      i++;
+    }
+  }
+  return arr.join("");
+}
+
+// Solution 3 - Regex
+function solutionThree(string) {
+  return string.replace(/([A-Z])/g, " $1");
+}
+
+// Solution 4 - Regex Arrow function
+const solutionFour = (string) => string.replace(/([A-Z])/g, " $1");
+
+console.log(solutionOne("camelCaseTest"));
+console.log(solutionTwo("camelCaseTest"));
+console.log(solutionThree("camelCaseTest"));
+console.log(solutionFour("camelCaseTest"));
